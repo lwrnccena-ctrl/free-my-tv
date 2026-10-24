@@ -9,6 +9,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - name: Config
+        run: |
+          cp config.example.properties config.properties
+          echo "tmdb_key=${{ secrets.TMDB_KEY }}" >> config.properties
       - name: Build
         run: |
           chmod +x build.sh
@@ -17,4 +21,3 @@ jobs:
         with:
           name: apk
           path: FreeMyTV.apk
-
